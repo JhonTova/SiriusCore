@@ -1,0 +1,11 @@
+target/
+dependency-reduced-pom.xml
+.vscode/
+*.log
+
+# Herramienta de emisión de licencias y material criptográfico.
+# Nunca se publica: la clave privada RSA firma las licencias de toda la suite.
+tools/
+*.key
+*.pem
+licencias-emitidas/

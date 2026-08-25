@@ -1,0 +1,18 @@
+# SiriusCore — núcleo de la suite
+# https://github.com/JhonTova
+
+# Las licencias no tienen ninguna opción aquí a propósito: no existe forma de desactivar
+# la verificación desde la config. La licencia se pone en plugins/SiriusCore/license.key
+# y los plugins premium la exigen siempre. Para tu propio servidor, emítete una licencia
+# con el producto "*" (cubre toda la suite).
+
+updates:
+  # Comprueba una sola vez, para toda la suite, si hay versiones nuevas.
+  # Es una descarga de un archivo estático: no se envía ningún dato del servidor.
+  check: true
+
+  # Cada cuántas horas se vuelve a comprobar. 0 = solo al arrancar.
+  interval-hours: 6
+
+  # De dónde se lee el manifiesto de versiones.
+  manifest: 'https://raw.githubusercontent.com/JhonTova/SiriusCore/main/updates.json'

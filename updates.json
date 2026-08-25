@@ -1,0 +1,148 @@
+{
+  "_comentario": [
+    "Manifiesto de versiones de la suite Sirius.",
+    "Vive en la rama main de github.com/JhonTova/SiriusCore. Editalo cada vez que publiques.",
+    "El core lo descarga una sola vez para toda la suite.",
+    "",
+    "Campos por plugin:",
+    "  version   (obligatorio) la ultima version publicada",
+    "  url       donde descargarla",
+    "  severity  normal | recommended | urgent   -> cambia el color y la etiqueta del aviso",
+    "  message   texto libre que se muestra bajo el aviso. Aqui escribes lo que quieras.",
+    "",
+    "La clave de cada plugin es su nombre (el 'name:' del plugin.yml) en minusculas.",
+    "Ojo: SDamage se registra como 'SPvP' y SHealthPlaceholder como 'SHealthPlaceholders'."
+  ],
+
+  "siriuscore": {
+    "version": "1.1.0",
+    "url": "https://github.com/JhonTova/SiriusCore/releases/latest",
+    "severity": "normal"
+  },
+
+  "sblock": {
+    "version": "1.2.0",
+    "url": "https://github.com/JhonTova/SBlock/releases/latest",
+    "severity": "normal"
+  },
+
+  "sbardamage": {
+    "version": "1.0.0",
+    "url": "https://github.com/JhonTova/SBarDamage/releases/latest",
+    "severity": "normal"
+  },
+
+  "sbooks": {
+    "version": "1.0.0",
+    "url": "https://github.com/JhonTova/SBooks/releases/latest",
+    "severity": "normal"
+  },
+
+  "scommunity": {
+    "version": "1.0.0",
+    "url": "https://github.com/JhonTova/SCommunity/releases/latest",
+    "severity": "normal"
+  },
+
+  "sconsolefix": {
+    "version": "1.0.0",
+    "url": "https://github.com/JhonTova/SConsoleFix/releases/latest",
+    "severity": "normal"
+  },
+
+  "spvp": {
+    "version": "2.0.0",
+    "url": "https://github.com/JhonTova/SDamage/releases/latest",
+    "severity": "normal"
+  },
+
+  "sdeathinventory": {
+    "version": "1.0.0",
+    "url": "https://github.com/JhonTova/SDeathInventory/releases/latest",
+    "severity": "normal"
+  },
+
+  "sguilds": {
+    "version": "1.0.0",
+    "url": "https://github.com/JhonTova/SGuilds/releases/latest",
+    "severity": "normal"
+  },
+
+  "shealthplaceholders": {
+    "version": "1.0.0",
+    "url": "https://github.com/JhonTova/SHealthPlaceholder/releases/latest",
+    "severity": "normal"
+  },
+
+  "sschedules": {
+    "version": "1.0.0",
+    "url": "https://github.com/JhonTova/SSchedules/releases/latest",
+    "severity": "normal"
+  },
+
+  "swave": {
+    "version": "1.0.0",
+    "url": "https://github.com/JhonTova/SWave/releases/latest",
+    "severity": "normal"
+  },
+
+  "swelcome": {
+    "version": "1.0.0",
+    "url": "https://github.com/JhonTova/SWelcome/releases/latest",
+    "severity": "normal"
+  },
+
+  "siriusffa": {
+    "version": "1.0.0",
+    "url": "https://github.com/JhonTova/SiriusFFA/releases/latest",
+    "severity": "normal"
+  },
+
+  "siriusskills": {
+    "version": "0.1.0",
+    "severity": "normal",
+    "message": "Plugin premium: actualiza desde tu compra en BuiltByBit."
+  },
+
+  "sbank": {
+    "version": "1.0.0",
+    "severity": "normal",
+    "message": "Plugin premium: actualiza desde tu compra en BuiltByBit."
+  },
+
+  "sdynamicquest": {
+    "version": "1.0.0",
+    "severity": "normal",
+    "message": "Plugin premium: actualiza desde tu compra en BuiltByBit."
+  },
+
+  "stutorials": {
+    "version": "1.0.0",
+    "severity": "normal",
+    "message": "Plugin premium: actualiza desde tu compra en BuiltByBit."
+  },
+
+  "sregionmobs": {
+    "version": "1.0.0",
+    "severity": "normal",
+    "message": "Plugin premium: actualiza desde tu compra en BuiltByBit."
+  },
+
+  "spawnerpickaxe": {
+    "version": "1.0.0",
+    "severity": "normal",
+    "message": "Plugin premium: actualiza desde tu compra en BuiltByBit."
+  },
+
+  "sorbs": {
+    "version": "1.0.0",
+    "severity": "normal",
+    "message": "Plugin premium: actualiza desde tu compra en BuiltByBit."
+  },
+
+  "spokeballs": {
+    "version": "1.0.0",
+    "severity": "normal",
+    "message": "Plugin premium: actualiza desde tu compra en BuiltByBit."
+  }
+}

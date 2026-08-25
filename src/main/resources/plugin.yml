@@ -1,0 +1,27 @@
+name: SiriusCore
+version: '${project.version}'
+main: me.sirius.core.SiriusCore
+api-version: '1.21'
+load: STARTUP
+author: Sirius
+website: https://github.com/JhonTova
+description: Núcleo compartido y capa de licencias para la suite de plugins Sirius.
+
+softdepend:
+  - PlaceholderAPI
+  - Vault
+
+commands:
+  sirius:
+    description: Muestra el panel de estado de la suite Sirius.
+    usage: /sirius
+    aliases: [siriuscore, sc]
+    permission: sirius.status
+
+permissions:
+  sirius.status:
+    description: Ver el panel de estado del core.
+    default: op
+  sirius.updates:
+    description: Recibe el aviso de actualizaciones al conectarse.
+    default: op
