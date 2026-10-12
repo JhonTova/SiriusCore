@@ -9,12 +9,14 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Menu implements InventoryHolder {
 
     private final Map<Integer, Button> buttons = new HashMap<>();
+    private final BitSet painted = new BitSet();
     private final Inventory inventory;
     private final int size;
 
@@ -32,6 +34,7 @@ public abstract class Menu implements InventoryHolder {
             return;
         }
         buttons.put(slot, button);
+        painted.set(slot);
         inventory.setItem(slot, button.icon());
     }
 
@@ -41,7 +44,8 @@ public abstract class Menu implements InventoryHolder {
 
     protected void fill(ItemStack filler) {
         for (int slot = 0; slot < size; slot++) {
-            if (inventory.getItem(slot) == null) {
+            if (!painted.get(slot)) {
+                painted.set(slot);
                 inventory.setItem(slot, filler);
             }
         }
@@ -60,6 +64,7 @@ public abstract class Menu implements InventoryHolder {
 
     protected void clear() {
         buttons.clear();
+        painted.clear();
         inventory.clear();
     }
 
@@ -69,12 +74,18 @@ public abstract class Menu implements InventoryHolder {
         player.openInventory(inventory);
     }
 
+    // Repinta encima de lo que hay en vez de vaciar y reconstruir: el servidor
+    // solo manda al cliente los huecos que cambian, sin el reenvio completo del
+    // inventario que forzaba updateInventory() en cada repintado.
     public void refresh() {
         for (var viewer : inventory.getViewers()) {
             if (viewer instanceof Player player) {
-                clear();
+                buttons.clear();
+                painted.clear();
                 build(player);
-                player.updateInventory();
+                for (int slot = painted.nextClearBit(0); slot < size; slot = painted.nextClearBit(slot + 1)) {
+                    inventory.setItem(slot, null);
+                }
                 return;
             }
         }

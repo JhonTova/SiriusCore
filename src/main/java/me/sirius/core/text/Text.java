@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,21 +46,69 @@ public final class Text {
         }
     }
 
+    // Los menus se repintan cada segundo con los mismos textos: parsear MiniMessage
+    // cada vez era lo que mas pesaba de toda la suite en el hilo principal.
+    private static final ParseCache<Object, Component> COMPONENTS = new ParseCache<>(4096);
+    private static final ParseCache<Object, String> LEGACY = new ParseCache<>(4096);
+
+    private record Template(String input, Map<String, String> values) {
+    }
+
     public static Component of(String input) {
         if (input == null || input.isEmpty()) {
             return Component.empty();
         }
-        return MINI.deserialize(legacyToTags(input)).compact();
+        return COMPONENTS.get(input, key -> parse(input, Map.of()));
     }
 
     public static Component of(String input, Map<String, String> placeholders) {
         if (input == null || input.isEmpty()) {
             return Component.empty();
         }
+        Map<String, String> used = used(input, placeholders);
+        if (used.isEmpty()) {
+            return of(input);
+        }
+        return COMPONENTS.get(new Template(input, used), key -> parse(input, used));
+    }
+
+    private static Component parse(String input, Map<String, String> placeholders) {
+        if (placeholders.isEmpty()) {
+            return MINI.deserialize(legacyToTags(input)).compact();
+        }
         List<TagResolver> resolvers = new ArrayList<>(placeholders.size());
         placeholders.forEach((key, value) -> resolvers.add(Placeholder.unparsed(key, value)));
 
         return MINI.deserialize(legacyToTags(input), TagResolver.resolver(resolvers)).compact();
+    }
+
+    // Solo los marcadores que aparecen en el texto entran en la clave de la cache.
+    // Asi una linea sin marcadores se reutiliza aunque el mapa traiga un contador
+    // que cambia cada segundo.
+    private static Map<String, String> used(String input, Map<String, String> placeholders) {
+        if (placeholders.isEmpty() || input.indexOf('<') < 0) {
+            return Map.of();
+        }
+        Map<String, String> used = null;
+        for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+            if (mentions(input, entry.getKey())) {
+                if (used == null) {
+                    used = new HashMap<>();
+                }
+                used.put(entry.getKey(), entry.getValue());
+            }
+        }
+        return used == null ? Map.of() : used;
+    }
+
+    private static boolean mentions(String input, String key) {
+        int last = input.length() - key.length() - 1;
+        for (int at = input.indexOf('<'); at >= 0 && at <= last; at = input.indexOf('<', at + 1)) {
+            if (input.regionMatches(true, at + 1, key, 0, key.length())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static List<Component> of(List<String> lines) {
@@ -83,7 +132,21 @@ public final class Text {
     }
 
     public static String legacy(String input) {
-        return legacy(of(input));
+        if (input == null || input.isEmpty()) {
+            return "";
+        }
+        return LEGACY.get(input, key -> legacy(parse(input, Map.of())));
+    }
+
+    public static String legacy(String input, Map<String, String> placeholders) {
+        if (input == null || input.isEmpty()) {
+            return "";
+        }
+        Map<String, String> used = used(input, placeholders);
+        if (used.isEmpty()) {
+            return legacy(input);
+        }
+        return LEGACY.get(new Template(input, used), key -> legacy(parse(input, used)));
     }
 
     public static void send(CommandSender target, String message) {

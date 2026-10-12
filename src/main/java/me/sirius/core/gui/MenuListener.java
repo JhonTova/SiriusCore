@@ -11,14 +11,14 @@ public final class MenuListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onClick(InventoryClickEvent event) {
-        if (event.getInventory().getHolder() instanceof Menu menu) {
+        if (Holders.of(event.getInventory()) instanceof Menu menu) {
             menu.handleClick(event);
         }
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onDrag(InventoryDragEvent event) {
-        if (!(event.getInventory().getHolder() instanceof Menu)) {
+        if (!(Holders.of(event.getInventory()) instanceof Menu)) {
             return;
         }
         int size = event.getInventory().getSize();
@@ -32,7 +32,7 @@ public final class MenuListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onClose(InventoryCloseEvent event) {
-        if (event.getInventory().getHolder() instanceof Menu menu) {
+        if (Holders.of(event.getInventory()) instanceof Menu menu) {
             menu.onClose(event);
         }
     }

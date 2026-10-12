@@ -57,6 +57,17 @@ public final class Hooks {
         return permissions() != null;
     }
 
+    public void unregisterExpansions(ClassLoader owner) {
+        if (!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            return;
+        }
+        try {
+            Expansions.unregisterOwnedBy(owner);
+        } catch (LinkageError incompatible) {
+            // Otra version de PlaceholderAPI sin esta API: no hay nada que limpiar.
+        }
+    }
+
     public String placeholders(Player player, String text) {
         if (text == null || !hasPlaceholderApi()) {
             return text;

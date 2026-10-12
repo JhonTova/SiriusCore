@@ -2,11 +2,14 @@ package me.sirius.core;
 
 import me.sirius.core.brand.Banner;
 import me.sirius.core.config.Config;
+import me.sirius.core.gui.Holders;
+import me.sirius.core.gui.Menu;
 import me.sirius.core.hook.Hooks;
 import me.sirius.core.license.LicenseStatus;
 import me.sirius.core.scheduler.Scheduler;
 import me.sirius.core.text.Text;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -95,10 +98,28 @@ public abstract class SiriusPlugin extends JavaPlugin {
         } catch (Throwable t) {
             getLogger().log(Level.SEVERE, "Fallo al detener " + getName(), t);
         } finally {
+            closeMenus();
+            SiriusCore core = SiriusCore.get();
+            if (core != null && core.hooks() != null) {
+                core.hooks().unregisterExpansions(getClass().getClassLoader());
+            }
             if (scheduler != null) {
                 scheduler.cancelAll();
             }
             started = false;
+        }
+    }
+
+    // Un menu abierto sobrevive al plugin que lo creo: el jugador podria seguir
+    // pulsando botones de un plugin apagado, y el menu retiene su classloader
+    // hasta que lo cierre. Se cierran los que pertenecen a este plugin.
+    private void closeMenus() {
+        ClassLoader own = getClass().getClassLoader();
+        for (Player player : getServer().getOnlinePlayers()) {
+            if (Holders.of(player.getOpenInventory().getTopInventory()) instanceof Menu menu
+                    && menu.getClass().getClassLoader() == own) {
+                player.closeInventory();
+            }
         }
     }
 

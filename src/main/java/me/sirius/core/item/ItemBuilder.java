@@ -55,7 +55,7 @@ public final class ItemBuilder {
     }
 
     public ItemBuilder name(String name, Map<String, String> placeholders) {
-        meta.setDisplayName(NO_ITALIC + Text.legacy(Text.of(name, placeholders)));
+        meta.setDisplayName(NO_ITALIC + Text.legacy(name, placeholders));
         return this;
     }
 
@@ -75,7 +75,7 @@ public final class ItemBuilder {
     public ItemBuilder lore(List<String> lines, Map<String, String> placeholders) {
         List<String> lore = new ArrayList<>(lines.size());
         for (String line : lines) {
-            lore.add(NO_ITALIC + Text.legacy(Text.of(line, placeholders)));
+            lore.add(NO_ITALIC + Text.legacy(line, placeholders));
         }
         meta.setLore(lore);
         return this;
