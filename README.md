@@ -10,6 +10,8 @@ Compatible con **Spigot · Paper · Purpur** · Minecraft **1.21.11+** · Java 2
 
 [Discord: ksirius](https://discord.gg/) · [GitHub: JhonTova](https://github.com/JhonTova)
 
+[![build](https://github.com/JhonTova/SiriusCore/actions/workflows/build.yml/badge.svg)](https://github.com/JhonTova/SiriusCore/actions/workflows/build.yml) [![release](https://img.shields.io/github/v/release/JhonTova/SiriusCore?label=release)](https://github.com/JhonTova/SiriusCore/releases/latest) ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.11%2B-62B47A) ![Java](https://img.shields.io/badge/Java-21-E76F00)
+
 </div>
 
 ---
