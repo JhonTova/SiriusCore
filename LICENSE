@@ -1,0 +1,44 @@
+Sirius Proprietary License
+
+Copyright (c) 2026 Jhon Edinson Oliveros Tovar (Sirius). All rights reserved.
+
+The source code of SiriusCore ("the Software") is published so that it can be read,
+audited and compiled. Publishing it does not make it open source.
+
+1. Permitted use
+   a. You may download and run the Software, free of charge, on any number of
+      Minecraft servers, including commercial ones.
+   b. You may read the source code and compile it, without modifications, to run it
+      on your own servers or to verify the published builds.
+   c. You may develop plugins that depend on the Software's public API and distribute
+      those plugins, provided they do not include the Software itself.
+
+2. Restrictions. Without prior written permission from the copyright holder you may not:
+   a. modify the Software, or distribute or run modified versions of it;
+   b. redistribute the Software, modified or not, in source or compiled form, outside the
+      official channels (the GitHub repository and the official project pages);
+   c. sell, sublicense or rent the Software;
+   d. remove, disable or circumvent the licence verification of any Sirius product, or
+      help others to do so;
+   e. remove or alter this licence or any copyright notice.
+
+3. Commercial Sirius plugins require their own licence, issued by the copyright holder.
+   This licence does not grant any right over them.
+
+4. The Software is provided "as is", without warranty of any kind. In no event shall the
+   copyright holder be liable for any claim, damages or other liability arising from the
+   use of the Software.
+
+Any use not expressly permitted above is reserved to the copyright holder. For other
+uses, contact the author through https://github.com/JhonTova.
+
+---
+
+Licencia propietaria de Sirius (resumen en español)
+
+El código de SiriusCore es público para que se pueda leer, auditar y compilar, pero no es
+open source. Puedes usarlo gratis en cualquier servidor (también comerciales), compilarlo
+sin cambios y crear plugins que dependan de su API. No puedes modificarlo, redistribuirlo
+fuera de los canales oficiales, venderlo ni saltarte la verificación de licencias de los
+productos Sirius. Se entrega "tal cual", sin garantía. La versión en inglés es la que
+rige.

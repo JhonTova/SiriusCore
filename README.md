@@ -45,7 +45,7 @@ Todos los plugins de la suite requieren **SiriusCore**. Sin él, ni arrancan. El
   (`&c`, `&#ff8800`) **mezclados en la misma línea**. Tus configs de siempre siguen funcionando.
 - **GUIs** con `InventoryHolder` — sin bugs de clics cruzados, un solo listener para todo.
 - **Base de datos** SQLite/MySQL con pool HikariCP y escrituras por lote.
-- **Scheduler consciente de Folia** — el mismo código corre en Spigot, Paper y Folia.
+- **Scheduler preparado para Folia** — las tareas ya distinguen entre el hilo principal y las regiones de Folia. La suite todavía no se declara compatible con Folia.
 - **Hooks** opcionales a PlaceholderAPI y Vault.
 - **Avisos de actualización** — una sola petición para toda la suite.
 - Comando **`/sirius`** para ver el estado del ecosistema en vivo.
@@ -56,7 +56,7 @@ Todos los plugins de la suite requieren **SiriusCore**. Sin él, ni arrancan. El
 2. Añade los plugins de Sirius que quieras (abajo, cada uno con su descarga).
 3. Arranca. El core crea su configuración solo.
 
-Requisitos: **Minecraft 1.21.11+** · **Java 21** · Spigot, Paper, Purpur o Folia.
+Requisitos: **Minecraft 1.21.11+** · **Java 21** · Spigot, Paper o Purpur.
 
 ## Catálogo
 
@@ -98,6 +98,13 @@ válida emitida por Sirius para arrancar. Se distribuyen en **BuiltByBit**.
 | **SPokeballs** | Captura mobs con pokébolas — ¡incluso con sus modelos! |
 
 > ¿Te interesa alguno de los premium? Escríbeme por Discord (**ksirius**) para conseguirlo.
+
+## Licencia
+
+- **SiriusCore**: [licencia propietaria](LICENSE). Uso gratuito en cualquier servidor y código visible,
+  pero sin permiso para modificarlo ni redistribuirlo.
+- **Plugins gratuitos**: [MIT](https://opensource.org/license/mit), cada uno con su `LICENSE`.
+- **Plugins premium**: requieren una licencia comercial.
 
 ---
 
